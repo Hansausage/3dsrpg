@@ -5,8 +5,8 @@ int main() {
     //initialize both consoles
     gfxInitDefault();
     PrintConsole top, bottom;
-    ConsoleInit(GFX_TOP, &top);
-    ConsoleInit(GFX_BOTTOM, &bottom);
+    consoleInit(GFX_TOP, &top);
+    consoleInit(GFX_BOTTOM, &bottom);
 
     consoleSelect(&top);
     printf("i'll put things here eventually\n");
