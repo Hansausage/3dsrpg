@@ -32,6 +32,9 @@ BUILD		:=	build
 SOURCES		:=	source
 DATA		:=	data
 INCLUDES	:=	include
+APP_TITLE := 3dsrpg
+APP_DESCRIPTION := nothing to see here yet
+APP_AUTHOR := Hansausage, ArcPh1r3, TriforceOfKirby
 #ROMFS		:=	romfs
 
 #---------------------------------------------------------------------------------
