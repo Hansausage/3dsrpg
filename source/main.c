@@ -7,20 +7,27 @@ int main() {
     PrintConsole top, bottom;
     consoleInit(GFX_TOP, &top);
     consoleInit(GFX_BOTTOM, &bottom);
+    double currFoeHP = 10;
+    double chrCurrWeaponAtk = 2;
 
-    consoleSelect(&top);
-    printf("i'll put things here eventually\n");
-    printf("press start to exit\n");
 
-    consoleSelect(&bottom);
-    printf("i'll put things here eventually\n");
+
+
+
+
+
 
     while (aptMainLoop()) {
+
+        drawOptions();
+
         //scan inputs
         hidScanInput();
         //check inputs
         u32 kDown = hidKeysDown();
         if (kDown & KEY_START) break;
+        if (kDown && KEY_RIGHT) attack();
+        if (kDown && KEY_LEFT) defend();
         //flush and swap framebuffers
         gfxFlushBuffers();
         gfxSwapBuffers();
