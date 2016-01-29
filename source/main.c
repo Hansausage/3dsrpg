@@ -1,34 +1,21 @@
 #include <3ds.h>
 #include <stdio.h>
 
-double currFoeHP = 10;
-double chrCurrWeaponAtk = 2;
-int chrLvl = 1;
-int chrLvlAtk;
-int mgkxp, mgkdmg;
+struct Characters {
+    char names[50];
+    double health[50];
+    double stalePineapples[50];
+};
 
-int chrLvlUp() {
-    for (int i; i <= chrLvl; i++) {
-      chrLvl = chrLvl + 1;
-      chrLvlAtk = chrLvl*2+1;
-      if (mgkxp >= chrLvl) {
-          mgkdmg = chrLvl*2;
-      }
-
-
-    }
-}
+struct Characters Char1;
 
 double attack() {
-    int chrAtk = chrLvlAtk + chrCurrWeaponAtk;
-    currFoeHP = currFoeHP - chrAtk;
-    return currFoeHP;
+
 }
 
 double defend() {
-    return 0;
-}
 
+}
 
 int main() {
     //initialize both consoles
