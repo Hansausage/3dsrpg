@@ -1,6 +1,7 @@
 #include <3ds.h>
 #include <stdio.h>
 
+
 int main() {
     //initialize both consoles
     gfxInitDefault();
@@ -9,17 +10,36 @@ int main() {
     consoleInit(GFX_BOTTOM, &bottom);
     double currFoeHP = 10;
     double chrCurrWeaponAtk = 2;
+    int chrLvl = 1;
+    int chrLvlAtk;
+    int mgkxp, mgkdmg;
+
+    int chrLvlUp() {
+        for (int i; i <= chrLvl; i++) {
+          chrLvl = chrLvl + 1;
+          chrLvlAtk = chrLvl*2+1;
+          if (mgkxp >= chrLvl) {
+              mgkdmg = chrLvl*2;
+          }
 
 
+        }
+    }
 
+    double attack() {
+        int chrAtk = chrLvlAtk + chrCurrWeaponAtk;
+        currFoeHP = currFoeHP - chrAtk;
+        return currFoeHP;
+    }
 
-
-
+    double defend() {
+        return 0;
+    }
 
 
     while (aptMainLoop()) {
 
-        drawOptions();
+
 
         //scan inputs
         hidScanInput();
