@@ -1,34 +1,24 @@
 #include <3ds.h>
 #include <stdio.h>
 
-double currFoeHP = 10;
-double chrCurrWeaponAtk = 2;
-int chrLvl = 1;
-int chrLvlAtk;
-int mgkxp, mgkdmg;
+char pointer = '>'
 
-int chrLvlUp() {
-    for (int i; i <= chrLvl; i++) {
-      chrLvl = chrLvl + 1;
-      chrLvlAtk = chrLvl*2+1;
-      if (mgkxp >= chrLvl) {
-          mgkdmg = chrLvl*2;
-      }
+struct Characters {
+        char name[50];
+        double health[50]
+        double magic[50];
+};
 
+struct Characters mainChar;
 
-    }
+strcopy(mainChar.name, mainName);
+mainChar.health = 20;
+mainChar.magic = 15;
+
+void createBMenu {
+        printf(pointer);
+        printf("\xlb[1;0HAttack");
 }
-
-double attack() {
-    int chrAtk = chrLvlAtk + chrCurrWeaponAtk;
-    currFoeHP = currFoeHP - chrAtk;
-    return currFoeHP;
-}
-
-double defend() {
-    return 0;
-}
-
 
 int main() {
     //initialize both consoles
@@ -43,7 +33,7 @@ int main() {
         hidScanInput();
         //check inputs
         u32 kDown = hidKeysDown();
-        if (kDown & KEY_START) break;
+        if (kDown && KEY_START) break;
         if (kDown && KEY_RIGHT) attack();
         if (kDown && KEY_LEFT) defend();
         //flush and swap framebuffers
