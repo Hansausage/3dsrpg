@@ -25,7 +25,7 @@ struct Characters {
 struct Weapons {
         char name[50];
         double damage[50];
-}
+};
 
 //Player Character
 struct Characters mainChar;
@@ -51,6 +51,8 @@ void createBMenu {
         printf("\xlb[" + x + ";" + y + "H" + pointer);
         printf("\xlb[1;0HAttack");
         printf("\xlb[1;1HDefend");
+        printf("Your Health:" + mainChar.health + "\n");
+        printf("Enemy Health:" + testEnemy.health + "\n");
         
 }
 
@@ -81,6 +83,9 @@ int main() {
     consoleInit(GFX_BOTTOM, &bottom);
 
     while (aptMainLoop()) {
+        
+        createBMenu();
+        
 
         //scan inputs
         hidScanInput();
