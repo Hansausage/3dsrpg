@@ -34,7 +34,7 @@ struct Enemies testEnemy;
 //Test weapon
 struct Weapons testWeapon;
 
-strcopy(testWeapon.name, "Test Enemy");
+strcopy(testWeapon.name, "Test Weapon");
 testWeapon.damage = 3;
 
 strcopy(testEnemy.name, "Test Enemy");
@@ -94,9 +94,6 @@ int main() {
                 enemyAttack();
                 bool defend = true;
         }
-        
-        
-        
         
         //flush and swap framebuffers
         gfxFlushBuffers();
