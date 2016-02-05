@@ -6,7 +6,7 @@ char pointer = '>';
 //example: printf("\xlb[" + x + ";" + y + "H" + pointer);
 int x, y;
 //main character's name
-char mainName[6] = "Goku";
+char mainName[3] = "Goku";
 
 struct Weapon {
         char name[50];
@@ -37,7 +37,7 @@ void createBMenu() {
         printf("\x1b[%i;%iH%c", x, y, pointer);
         printf("\x1b[1;0HAttack");
         printf("\x1b[1;1HDefend");
-        //printf("Your Health:" + mainChar.health + "\n");
+        //printf();
         //printf("Enemy Health:" + testEnemy.health + "\n");
         
 }
@@ -69,6 +69,7 @@ int main() {
     PrintConsole top, bottom;
     consoleInit(GFX_TOP, &top);
     consoleInit(GFX_BOTTOM, &bottom);
+    
     strcopy(testWeapon.name, "Test Weapon");
     testWeapon.damage = 3;
 
@@ -79,6 +80,7 @@ int main() {
     strcopy(mainChar.name, mainName);
     mainChar.health = 20;
     mainChar.magic = 15;
+    
     while (aptMainLoop()) {
         
         createBMenu();
