@@ -1,70 +1,58 @@
 #include <3ds.h>
 #include <stdio.h>
-
 //for menus and stuff
 char pointer = '>';
 //for selecting row and coloumn in \xlb[X;YH for pointer
 //example: printf("\xlb[" + x + ";" + y + "H" + pointer);
 int x, y;
 //main character's name
-char mainName = 'Goku';
+char mainName[6] = "Goku";
 
-struct Enemies {
+struct Weapon {
         char name[50];
-        int type[50];
-        double health[50];
-        double magic[50];
+        double damage;
 };
 
-struct Characters {
+struct Character {
         char name[50];
-        double health[50];
-        double magic[50];
+        double health;
+        double magic;
 };
 
-struct Weapons {
+struct Enemy {
         char name[50];
-        double damage[50];
+        double health;
+        double damage;
+        
 };
 
-//Player Character
-struct Characters mainChar;
-//Test Enemy
-struct Enemies testEnemy;
-//Test weapon
-struct Weapons testWeapon;
+struct Character mainChar;
+struct Enemy testEnemy;
+struct Weapon testWeapon;
 
-strcopy(testWeapon.name, "Test Weapon");
-testWeapon.damage = 3;
 
-strcopy(testEnemy.name, "Test Enemy");
-testEnemy.health = 10;
-testEnemy.magic = 0;
-testEnemy.damage = 2;
-
-strcopy(mainChar.name, mainName);
-mainChar.health = 20;
-mainChar.magic = 15;
 
 //Create battle menu
-void createBMenu {
-        printf("\xlb[" + x + ";" + y + "H" + pointer);
-        printf("\xlb[1;0HAttack");
-        printf("\xlb[1;1HDefend");
-        printf("Your Health:" + mainChar.health + "\n");
-        printf("Enemy Health:" + testEnemy.health + "\n");
+void createBMenu() {
+        printf("\x1b[%i;%iH%c", x, y, pointer);
+        printf("\x1b[1;0HAttack");
+        printf("\x1b[1;1HDefend");
+        //printf("Your Health:" + mainChar.health + "\n");
+        //printf("Enemy Health:" + testEnemy.health + "\n");
         
+}
+
+
+
+double enemyAttack() {
+        mainChar.health = mainChar.health - testEnemy.damage;
+        return mainChar.health;
 }
 
 double attack() {
         testEnemy.health = testEnemy.health - testWeapon.damage;
         enemyAttack();
         return testEnemy.health;
-}
-
-double enemyAttack() {
-        mainChar.health = mainChar.health - testEnemy.damage;
-        return mainChar.health;
 }
 
 double defend() {
@@ -81,7 +69,16 @@ int main() {
     PrintConsole top, bottom;
     consoleInit(GFX_TOP, &top);
     consoleInit(GFX_BOTTOM, &bottom);
+    strcopy(testWeapon.name, "Test Weapon");
+    testWeapon.damage = 3;
 
+    strcopy(testEnemy.name, "Test Enemy");
+    testEnemy.health = 10;
+    testEnemy.damage = 2;
+
+    strcopy(mainChar.name, mainName);
+    mainChar.health = 20;
+    mainChar.magic = 15;
     while (aptMainLoop()) {
         
         createBMenu();
