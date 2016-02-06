@@ -23,7 +23,7 @@ struct Enemy {
         char name[50];
         double health;
         double damage;
-        
+
 };
 
 struct Character mainChar;
@@ -34,12 +34,12 @@ struct Weapon testWeapon;
 
 //Create battle menu
 void createBMenu() {
-        printf("\x1b[%i;%iH%c", x, y, pointer);
-        printf("\x1b[1;0HAttack");
-        printf("\x1b[1;1HDefend");
-        //printf();
-        //printf("Enemy Health:" + testEnemy.health + "\n");
-        
+        printf("\x1b[%i;%iH%c\n", x, y, pointer);
+        printf("\x1b[0;2HAttack\n");
+        printf("\x1b[1;2HDefend\n");
+        printf("Your Health: %d\n", mainChar.health);
+        printf("Enemy Health: %d\n", testEnemy.health);
+
 }
 
 
@@ -69,22 +69,22 @@ int main() {
     PrintConsole top, bottom;
     consoleInit(GFX_TOP, &top);
     consoleInit(GFX_BOTTOM, &bottom);
-    
-    strcopy(testWeapon.name, "Test Weapon");
+
+    strcpy(testWeapon.name, "Test Weapon");
     testWeapon.damage = 3;
 
-    strcopy(testEnemy.name, "Test Enemy");
+    strcpy(testEnemy.name, "Test Enemy");
     testEnemy.health = 10;
     testEnemy.damage = 2;
 
-    strcopy(mainChar.name, mainName);
+    strcpy(mainChar.name, mainName);
     mainChar.health = 20;
     mainChar.magic = 15;
-    
+
     while (aptMainLoop()) {
-        
+
         createBMenu();
-        
+
 
         //scan inputs
         hidScanInput();
@@ -98,7 +98,7 @@ int main() {
                 enemyAttack();
                 bool defend = true;
         }
-        
+
         //flush and swap framebuffers
         gfxFlushBuffers();
         gfxSwapBuffers();
